@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace Code
+namespace Code.FarWorld
 {
     public class AtmosphereMono : MonoBehaviour
     {
