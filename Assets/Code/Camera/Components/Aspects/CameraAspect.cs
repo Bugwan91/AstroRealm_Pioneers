@@ -72,7 +72,7 @@ namespace Code.Camera
 
         public bool InCockpit => CurrentHeight - MinHeight < _settings.ValueRO.ToCockpitHeightThreshold;
 
-        public float3 Acceleration => MathUtil.ClampVector(_camera.ValueRO.Acceleration * (InCockpit ? 0.01f : 1f), InCockpit ? 0.1f : 10f);
+        public float3 Acceleration => MathUtil.ClampVector(_camera.ValueRO.Acceleration * (InCockpit ? 0.02f : 1f), InCockpit ? 0.2f : 10f);
 
         [BurstCompile]
         public void Update(float scrollInput, float tiltInput, float delta, float3 acceleration)

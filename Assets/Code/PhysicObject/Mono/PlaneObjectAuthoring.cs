@@ -12,13 +12,10 @@ namespace Code.PhysicObject
             public override void Bake(PlaneObjectAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent<ResetPosition>(entity);
-                AddComponent<ResetLinearVelocity>(entity);
-                if (authoring.noExtraRotation)
+                AddComponent(entity, new ResetToPlane
                 {
-                    AddComponent<ResetRotation>(entity);
-                    AddComponent<ResetAngularVelocity>(entity);
-                }
+                    AndRotation = authoring.noExtraRotation
+                });
             }
         }
     }
