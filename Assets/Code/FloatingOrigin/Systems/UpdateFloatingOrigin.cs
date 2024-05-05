@@ -11,7 +11,7 @@ namespace Code.FloatingOrigin
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-            state.RequireForUpdate<FloatingOriginTarget>();
+            state.RequireForUpdate<FloatingOriginTargetTag>();
             state.RequireForUpdate<FloatingOriginBase>();
         }
 
@@ -20,7 +20,7 @@ namespace Code.FloatingOrigin
         {
             var floatingOrigin = SystemAPI.GetAspect<FloatingOriginAspect>(SystemAPI.GetSingletonEntity<FloatingOriginBase>());
             if (!floatingOrigin.Enabled) return;
-            var floatingTarget = SystemAPI.GetSingletonEntity<FloatingOriginTarget>();
+            var floatingTarget = SystemAPI.GetSingletonEntity<FloatingOriginTargetTag>();
             var position = SystemAPI.GetComponent<LocalTransform>(floatingTarget).Position;
             var velocity = SystemAPI.GetComponent<PhysicsVelocity>(floatingTarget).Linear;
             floatingOrigin.Update(position, velocity);

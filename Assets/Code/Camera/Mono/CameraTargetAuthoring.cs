@@ -10,7 +10,7 @@ namespace Code.Camera
         {
             public override void Bake(CameraTargetAuthoring authoring)
             {
-                AddComponent<CameraTarget>(GetEntity(TransformUsageFlags.Dynamic));
+                AddComponent<CameraTargetTag>(GetEntity(TransformUsageFlags.Dynamic));
             }
         }
     }

@@ -2,5 +2,5 @@ using Unity.Entities;
 
 namespace Code.Camera
 {
-    public struct Pointer : IComponentData {}
+    public struct PointerTag : IComponentData {}
 }

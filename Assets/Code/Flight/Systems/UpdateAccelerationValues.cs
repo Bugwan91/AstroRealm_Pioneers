@@ -15,7 +15,7 @@ namespace Code.Flight
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<FloatingOriginBase>();
-            state.RequireForUpdate<FloatingOriginBody>();
+            state.RequireForUpdate<FloatingOriginBodyTag>();
             state.RequireForUpdate<Acceleration>();
         }
 
@@ -30,14 +30,14 @@ namespace Code.Flight
     }
     
     [BurstCompile]
+    [WithAll(typeof(FloatingOriginBodyTag))]
     public partial struct UpdateAccelerationValueJob : IJobEntity
     {
         public float3 Shift;
         
         [BurstCompile]
         private void Execute(ref Acceleration acceleration,
-            in PhysicsVelocity velocity,
-            in FloatingOriginBody floatingOriginBody)
+            in PhysicsVelocity velocity)
         {
             var pastV = acceleration.PreviousVelocity + Shift;
             acceleration.Value = velocity.Linear - pastV;

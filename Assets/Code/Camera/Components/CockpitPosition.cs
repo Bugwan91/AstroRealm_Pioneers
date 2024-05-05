@@ -2,6 +2,6 @@ using Unity.Entities;
 
 namespace Code.Camera
 {
-    public struct CockpitPosition : IComponentData
+    public struct CockpitPositionTag : IComponentData
     {}
 }

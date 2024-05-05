@@ -16,7 +16,7 @@ namespace Code.FloatingOrigin
         public float3 DeltaVelocity;
     }
 
-    public struct FloatingOriginTarget : IComponentData {}
+    public struct FloatingOriginTargetTag : IComponentData {}
 
-    public struct FloatingOriginBody : IComponentData {}
+    public struct FloatingOriginBodyTag : IComponentData {}
 }

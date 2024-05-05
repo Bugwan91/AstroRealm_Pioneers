@@ -71,7 +71,7 @@ namespace Code.UI
             if (_pointerEntity == Entity.Null)
             {
                 _pointerEntity = _entityManager
-                    .CreateEntityQuery(typeof(Pointer))
+                    .CreateEntityQuery(typeof(PointerTag))
                     .GetSingletonEntity();
             }
             return _pointerEntity;
@@ -82,7 +82,7 @@ namespace Code.UI
             if (_shipEntity == Entity.Null)
             {
                 _shipEntity = _entityManager
-                    .CreateEntityQuery(typeof(ShipControlledByPlayer))
+                    .CreateEntityQuery(typeof(ShipControlledByPlayerTag))
                     .GetSingletonEntity();
             }
             return _shipEntity;

@@ -9,7 +9,7 @@ namespace Code.Camera
         {
             public override void Bake(CockpitPositionAuthoring authoring)
             {
-                AddComponent<CockpitPosition>(GetEntity(TransformUsageFlags.Dynamic));
+                AddComponent<CockpitPositionTag>(GetEntity(TransformUsageFlags.Dynamic));
             }
         }
     }

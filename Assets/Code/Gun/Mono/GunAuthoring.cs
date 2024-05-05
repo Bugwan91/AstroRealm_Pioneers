@@ -29,7 +29,7 @@ namespace Code.Gun
             });
             if (authoring.isControlledByPlayer)
             {
-                AddComponent<GunControlledByPlayer>(gunEntity);
+                AddComponent<GunControlledByPlayerTag>(gunEntity);
             }
             AddComponent<FireInput>(gunEntity);
         }

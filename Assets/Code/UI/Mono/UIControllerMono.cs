@@ -34,7 +34,7 @@ namespace Code.UI
         private Entity GetShipEntity()
         {
             if (_shipEntity == Entity.Null) {
-                _shipEntity = _entityManager.CreateEntityQuery(typeof(ShipControlledByPlayer)).GetSingletonEntity();
+                _shipEntity = _entityManager.CreateEntityQuery(typeof(ShipControlledByPlayerTag)).GetSingletonEntity();
             }
             return _shipEntity;
         }

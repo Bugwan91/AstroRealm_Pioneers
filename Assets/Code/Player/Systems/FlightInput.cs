@@ -15,21 +15,21 @@ namespace Code.Player
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<PlayerInputData>();
-            state.RequireForUpdate<ShipControlledByPlayer>();
-            state.RequireForUpdate<Pointer>();
+            state.RequireForUpdate<ShipControlledByPlayerTag>();
+            state.RequireForUpdate<PointerTag>();
         }
         
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
             var playerInput = SystemAPI.GetSingleton<PlayerInputData>();
-            var flightEntity = SystemAPI.GetSingletonEntity<ShipControlledByPlayer>();
+            var flightEntity = SystemAPI.GetSingletonEntity<ShipControlledByPlayerTag>();
             var flightInput = SystemAPI.GetAspect<FlightInputAspect>(flightEntity);
             flightInput.Strafe = new float3(playerInput.Strafe.x, 0f, playerInput.Strafe.y);
             flightInput.InertialDumper = playerInput.InertialDamper;
 
             var flightPosition = SystemAPI.GetComponent<LocalTransform>(flightEntity).Position;
-            var pointerPosition = SystemAPI.GetComponent<LocalTransform>(SystemAPI.GetSingletonEntity<Pointer>()).Position;
+            var pointerPosition = SystemAPI.GetComponent<LocalTransform>(SystemAPI.GetSingletonEntity<PointerTag>()).Position;
 
             if (playerInput.FreeLook == 0f) {
                 var direction = math.normalize(pointerPosition - flightPosition);

@@ -10,7 +10,7 @@ namespace Code.Player
     {
         public void OnCreate(ref SystemState state)
         {
-            state.RequireForUpdate<GunControlledByPlayer>();
+            state.RequireForUpdate<GunControlledByPlayerTag>();
             state.RequireForUpdate<PlayerInputData>();
         }
 
@@ -18,7 +18,7 @@ namespace Code.Player
         public void OnUpdate(ref SystemState state)
         {
             var playerInput = SystemAPI.GetSingleton<PlayerInputData>();
-            var gunEntity = SystemAPI.GetSingletonEntity<GunControlledByPlayer>();
+            var gunEntity = SystemAPI.GetSingletonEntity<GunControlledByPlayerTag>();
             var fireInput = SystemAPI.GetAspect<FireInputAspect>(gunEntity);
             fireInput.Fire = playerInput.Fire;
         }

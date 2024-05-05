@@ -16,13 +16,13 @@ namespace Code.Camera
         {
             state.RequireForUpdate<FloatingOriginBase>();
             state.RequireForUpdate<VelocityPointer>();
-            state.RequireForUpdate<ShipControlledByPlayer>();
+            state.RequireForUpdate<ShipControlledByPlayerTag>();
         }
 
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            var player = SystemAPI.GetSingletonEntity<ShipControlledByPlayer>();
+            var player = SystemAPI.GetSingletonEntity<ShipControlledByPlayerTag>();
             var fo = SystemAPI.GetAspect<FloatingOriginAspect>(SystemAPI.GetSingletonEntity<FloatingOriginBase>());
             var position = SystemAPI.GetComponent<LocalTransform>(player).Position;
             var velocity = SystemAPI.GetComponent<PhysicsVelocity>(player).Linear;

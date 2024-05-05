@@ -16,7 +16,7 @@ namespace Code.Camera
         {
             state.RequireForUpdate<Camera>();
             state.RequireForUpdate<CameraOrbit>();
-            state.RequireForUpdate<Pointer>();
+            state.RequireForUpdate<PointerTag>();
         }
         
         [BurstCompile]
@@ -24,7 +24,7 @@ namespace Code.Camera
         {
             var camera = SystemAPI.GetAspect<CameraAspect>(SystemAPI.GetSingletonEntity<Camera>());
             var orbit = SystemAPI.GetComponent<LocalTransform>(SystemAPI.GetSingletonEntity<CameraOrbit>());
-            var pointer = SystemAPI.GetAspect<PointerAspect>(SystemAPI.GetSingletonEntity<Pointer>());
+            var pointer = SystemAPI.GetAspect<PointerAspect>(SystemAPI.GetSingletonEntity<PointerTag>());
             
             var pointerPivot = LocalTransform.FromPositionRotation(
                 MathUtil.RotateY(camera.OriginPosition.xyz, orbit.Rotation.value, orbit.Position),

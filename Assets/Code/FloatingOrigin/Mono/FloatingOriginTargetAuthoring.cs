@@ -10,7 +10,7 @@ namespace Code.FloatingOrigin
             public override void Bake(FloatingOriginTargetAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.Dynamic);
-                AddComponent<FloatingOriginTarget>(entity);
+                AddComponent<FloatingOriginTargetTag>(entity);
             }
         }
     }

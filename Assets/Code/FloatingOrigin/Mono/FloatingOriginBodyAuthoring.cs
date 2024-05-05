@@ -9,7 +9,7 @@ namespace Code.FloatingOrigin
         {
             public override void Bake(FloatingOriginBodyAuthoring authoring)
             {
-                AddComponent<FloatingOriginBody>(GetEntity(TransformUsageFlags.Dynamic));
+                AddComponent<FloatingOriginBodyTag>(GetEntity(TransformUsageFlags.Dynamic));
             }
         }
     }

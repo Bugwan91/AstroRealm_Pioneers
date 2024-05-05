@@ -28,7 +28,7 @@ namespace Code.MainController
         private void LateUpdate()
         {
             // TODO Optimize
-            var position = _entityManager.GetComponentData<LocalTransform>(_entityManager.CreateEntityQuery(typeof(CameraTarget)).GetSingletonEntity()).Position;
+            var position = _entityManager.GetComponentData<LocalTransform>(_entityManager.CreateEntityQuery(typeof(CameraTargetTag)).GetSingletonEntity()).Position;
             position.y = -1f;
             transform.position = position;
             _material.SetVector(Offset, -(Vector3)_entityManager.GetAspect<FloatingOriginAspect>(GetFOEntity()).TotalPosition);

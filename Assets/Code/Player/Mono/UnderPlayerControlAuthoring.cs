@@ -9,7 +9,7 @@ namespace Code.Player
         {
             public override void Bake(UnderPlayerControlAuthoring controlAuthoring)
             {
-                AddComponent<ShipControlledByPlayer>(GetEntity(TransformUsageFlags.Dynamic));
+                AddComponent<ShipControlledByPlayerTag>(GetEntity(TransformUsageFlags.Dynamic));
             }
         }
     }

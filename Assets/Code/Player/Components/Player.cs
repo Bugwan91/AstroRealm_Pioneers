@@ -2,7 +2,7 @@ using Unity.Entities;
 
 namespace Code.Player
 {
-    public struct ShipControlledByPlayer : IComponentData { }
+    public struct ShipControlledByPlayerTag : IComponentData { }
 
-    public struct GunControlledByPlayer : IComponentData { }
+    public struct GunControlledByPlayerTag : IComponentData { }
 }

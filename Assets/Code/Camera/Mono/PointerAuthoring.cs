@@ -11,7 +11,7 @@ namespace Code.Player
         public override void Bake(PointerAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent<Pointer>(entity);
+            AddComponent<PointerTag>(entity);
         }
     }
 }

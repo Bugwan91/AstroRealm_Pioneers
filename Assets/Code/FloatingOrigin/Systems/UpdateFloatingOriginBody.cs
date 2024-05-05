@@ -14,7 +14,7 @@ namespace Code.FloatingOrigin
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<FloatingOriginBase>();
-            state.RequireForUpdate<FloatingOriginBody>();
+            state.RequireForUpdate<FloatingOriginBodyTag>();
         }
 
         [BurstCompile]
@@ -32,7 +32,7 @@ namespace Code.FloatingOrigin
         }
         
         [BurstCompile]
-        [WithAll(typeof(FloatingOriginBody))]
+        [WithAll(typeof(FloatingOriginBodyTag))]
         public partial struct UpdateFloatingOriginBodyJob : IJobEntity
         {
 
