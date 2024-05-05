@@ -30,7 +30,7 @@ namespace Code.Gun
             if (gun.LastShootTime + gun.ShootDelay > time) return;
             _gun.ValueRW.LastShootTime = time;
             var bullet = ecb.Instantiate(index, gun.BulletPrefab);
-            ecb.AddComponent(index, bullet, new LifeTime
+            ecb.SetComponent(index, bullet, new LifeTime
             {
                 TimeLeft = BulletLifeTime
             });
