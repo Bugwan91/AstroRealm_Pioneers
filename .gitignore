@@ -72,6 +72,7 @@ crashlytics-build.properties
 /.plastic
 /.idea
 /[Aa]ssets/.idea
+/[Aa]ssets/SceneDependencyCache
 /[Aa]ssets/Addons/_Ignore
 
 # Exceptions
