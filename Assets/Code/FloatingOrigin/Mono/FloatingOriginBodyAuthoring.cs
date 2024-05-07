@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Code.FloatingOrigin
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class FloatingOriginBodyAuthoring : MonoBehaviour
     {
         private class FloatingOriginBodyBaker : Baker<FloatingOriginBodyAuthoring>

@@ -12,12 +12,14 @@ namespace Code.Damage
         {
             public override void Bake(DestructableAuthoring authoring)
             {
-                AddComponent(GetEntity(TransformUsageFlags.Dynamic), new Destructable
+                var entity = GetEntity(TransformUsageFlags.Dynamic);
+                AddComponent(entity, new Destructable
                 {
                     Health = authoring.health,
                     ByTimer = authoring.timeLeft > 0,
                     TimeLeft = authoring.timeLeft,
                 });
+                AddComponent<TakingDamage>(entity);
             }
         }
     }

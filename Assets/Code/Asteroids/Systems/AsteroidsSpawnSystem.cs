@@ -1,3 +1,4 @@
+using Code.Damage;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -27,6 +28,7 @@ namespace Code.Asteroids
             for (var i = 0; i < settings.MaxCount; i++)
             {
                 var asteroid = state.EntityManager.Instantiate(prefabs[UnityEngine.Random.Range(0, 2)].Prefab);
+                
                 var transform = LocalTransform.Identity;
                 transform.Position.x = UnityEngine.Random.Range(-settings.Bounds.x, settings.Bounds.x);
                 transform.Position.y = math.pow(UnityEngine.Random.Range(-1f, 1f), 5f) * settings.Bounds.y;
@@ -37,15 +39,23 @@ namespace Code.Asteroids
                 var scale = UnityEngine.Random.Range(0.5f, 8f) + 64f * math.pow(UnityEngine.Random.Range(0f, 1f), 32f);
                 transform.Scale *= scale;
                 state.EntityManager.SetComponentData(asteroid, transform);
-                var phys = SystemAPI.GetComponent<PhysicsMass>(asteroid);
+                
+                var phys = state.EntityManager.GetComponentData<PhysicsMass>(asteroid);
                 phys.InverseMass = 2.0f / math.pow(scale, 2f);
                 state.EntityManager.SetComponentData(asteroid, phys);
-                var velocity = SystemAPI.GetComponent<PhysicsVelocity>(asteroid);
+                
+                var velocity = state.EntityManager.GetComponentData<PhysicsVelocity>(asteroid);
                 velocity.Angular = new float3(
                     UnityEngine.Random.Range(-1f, 1f) / math.sqrt(scale),
                     UnityEngine.Random.Range(-1f, 1f) / math.sqrt(scale),
                     UnityEngine.Random.Range(-1f, 1f)) / math.sqrt(scale);
                 state.EntityManager.SetComponentData(asteroid, velocity);
+                
+                state.EntityManager.SetComponentData(asteroid, new Destructable
+                {
+                    Health = 100f * math.sqrt(scale)
+                });
+                state.EntityManager.SetComponentData(asteroid, new TakingDamage());
                 
                 // var collider = SystemAPI.GetComponent<PhysicsCollider>(asteroid);
             }

@@ -10,7 +10,7 @@ namespace Code.Damage
 
     // TODO: Update to IBufferElementData
     // TODO: Maybe it worth to use IEnableableComponent for performance reasons
-    public struct TakeDamage : IComponentData
+    public struct TakingDamage : IComponentData
     {
         public float Value;
     }

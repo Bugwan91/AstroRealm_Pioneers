@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Code.FloatingOrigin
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class FloatingOriginBaseAuthoring : MonoBehaviour
     {
         public bool Enabled = true;

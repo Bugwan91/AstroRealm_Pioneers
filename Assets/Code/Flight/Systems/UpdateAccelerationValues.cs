@@ -1,5 +1,5 @@
 using Code.FloatingOrigin;
-using Code.Weapon;
+using Code.Damage;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
