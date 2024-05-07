@@ -28,7 +28,6 @@ namespace Code.UI
         private void OnEnable()
         {
             _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            
         }
         
         private void LateUpdate()

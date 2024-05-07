@@ -1,10 +1,14 @@
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Physics.Systems;
 
 namespace Code.Flight
 {
+    public struct StrafeInput : IComponentData
+    {
+        public float3 Value;
+    }
+    
     [UpdateInGroup(typeof(FlightSystemGroup))]
     public partial struct StrafeSystem : ISystem
     {

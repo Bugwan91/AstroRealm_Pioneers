@@ -1,10 +1,14 @@
 using Unity.Burst;
 using Unity.Entities;
-using Unity.Physics.Systems;
-using UnityEngine;
+using Unity.Mathematics;
 
 namespace Code.Flight
 {
+    public struct DirectionInput : IComponentData
+    {
+        public float3 Value;
+    }
+    
     [UpdateInGroup(typeof(FlightSystemGroup))]
     public partial struct YawSystem : ISystem
     {

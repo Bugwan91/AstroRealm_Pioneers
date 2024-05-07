@@ -104,6 +104,7 @@ MonoBehaviour:
   fireRate: 4
   maxDistance: 3000
   bulletSpeed: 1000
+  damage: 10
 --- !u!1 &919132149155446097
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +753,7 @@ GameObject:
   - component: {fileID: 327990506554131148}
   - component: {fileID: 5550963358876519348}
   - component: {fileID: 8449784304120436526}
+  - component: {fileID: 9167457160886261492}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -971,3 +973,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d0e13bb528424b9c893a3e653ffee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9167457160886261492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9208554002607091298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3985847a6a76458bb761e4c1271c9ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1000

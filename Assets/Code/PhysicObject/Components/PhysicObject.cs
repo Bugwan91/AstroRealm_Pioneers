@@ -1,9 +1,10 @@
 using Unity.Entities;
+using Unity.Physics;
 
 namespace Code.PhysicObject
 {
-    public struct ResetToPlane : IComponentData
+    public struct DisabledCollider : IComponentData, IEnableableComponent
     {
-        public bool AndRotation;
+        public PhysicsCollider Value;
     }
 }

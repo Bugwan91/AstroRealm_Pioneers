@@ -1,15 +1,16 @@
 using Unity.Entities;
 using Unity.Mathematics;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
-    public struct Gun: IComponentData
+    public struct Weapon: IComponentData
     {
-        public Entity BulletPrefab;
+        public Entity ProjectilePrefab;
         public float3 MuzzlePosition; // TODO: set Y to 0 for keeping projectiles in main plane
         public float MaxDistance;
         public float BulletSpeed;
         public float ShootDelay;
+        public float Damage;
         
         public double LastShootTime;
         public float3 Velocity;
@@ -17,7 +18,7 @@ namespace Code.Gun
 
     public struct GunIsFiring : IComponentData {}
 
-    public struct GunSlot : IComponentData
+    public struct WeaponSlot : IComponentData
     {
         public Entity Gun;
     }

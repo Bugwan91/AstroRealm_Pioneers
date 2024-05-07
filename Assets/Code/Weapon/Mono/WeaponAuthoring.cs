@@ -2,9 +2,9 @@ using Code.Player;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
-    public class GunAuthoring: MonoBehaviour
+    public class WeaponAuthoring: MonoBehaviour
     {
         public bool isControlledByPlayer = false;
         public GameObject bulletPrefab;
@@ -12,20 +12,22 @@ namespace Code.Gun
         public float fireRate = 4f;
         public float maxDistance = 3000f;
         public float bulletSpeed = 1000f;
+        public float damage = 10f;
     }
 
-    public class GunBaker : Baker<GunAuthoring>
+    public class WeaponBaker : Baker<WeaponAuthoring>
     {
-        public override void Bake(GunAuthoring authoring)
+        public override void Bake(WeaponAuthoring authoring)
         {
             var gunEntity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent(gunEntity, new Gun
+            AddComponent(gunEntity, new Weapon
             {
-                BulletPrefab = GetEntity(authoring.bulletPrefab, TransformUsageFlags.Dynamic),
+                ProjectilePrefab = GetEntity(authoring.bulletPrefab, TransformUsageFlags.Dynamic),
                 MuzzlePosition = authoring.muzzlePosition.localPosition,
                 ShootDelay = 1f / authoring.fireRate,
                 MaxDistance = authoring.maxDistance,
                 BulletSpeed = authoring.bulletSpeed,
+                Damage = authoring.damage
             });
             if (authoring.isControlledByPlayer)
             {

@@ -3,7 +3,7 @@ using Code.Flight;
 using Unity.Entities;
 using UnityEngine;
 using Code.Player;
-using Code.Gun;
+using Code.Weapon;
 using Unity.Transforms;
 
 namespace Code.Ship

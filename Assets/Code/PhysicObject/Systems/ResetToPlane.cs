@@ -6,6 +6,11 @@ using Unity.Transforms;
 
 namespace Code.PhysicObject
 {
+    public struct ResetToPlane : IComponentData
+    {
+        public bool AndRotation;
+    }
+    
     [UpdateInGroup(typeof(ResetToPlaneSystemGroup))]
     public partial struct ResetToPlaneSystem : ISystem
     {

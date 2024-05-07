@@ -187,7 +187,7 @@ Material:
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
     - _AlphaCutoffShadow: 0.5
-    - _AlphaDstBlend: 10
+    - _AlphaDstBlend: 1
     - _AlphaRemapMax: 1
     - _AlphaRemapMin: 0
     - _AlphaSrcBlend: 1
@@ -195,7 +195,7 @@ Material:
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
-    - _BlendMode: 0
+    - _BlendMode: 1
     - _BumpScale: 1
     - _CoatCoverage: 1
     - _CoatIOR: 0.5
@@ -231,7 +231,7 @@ Material:
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
     - _Drag: 1
-    - _DstBlend: 10
+    - _DstBlend: 1
     - _EditorExpendedAreas: 3e-45
     - _EmissionScaleUI: 0
     - _EmissiveColorMode: 1

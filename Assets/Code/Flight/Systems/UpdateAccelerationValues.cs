@@ -1,4 +1,5 @@
 using Code.FloatingOrigin;
+using Code.Weapon;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -7,8 +8,15 @@ using Unity.Physics.Systems;
 
 namespace Code.Flight
 {
+    public struct Acceleration : IComponentData
+    {
+        public float3 PreviousVelocity;
+        public float3 Value;
+    }
+    
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
     [UpdateAfter(typeof(PhysicsSystemGroup))]
+    [UpdateAfter(typeof(ProjectileHitSystem))]
     public partial struct UpdateAccelerationValuesSystem : ISystem
     {
         [BurstCompile]

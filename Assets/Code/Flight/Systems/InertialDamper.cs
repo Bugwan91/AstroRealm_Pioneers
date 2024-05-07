@@ -6,6 +6,11 @@ using Unity.Physics;
 
 namespace Code.Flight
 {
+    public struct InertialDamperInput : IComponentData
+    {
+        public float Value;
+    }
+    
     [UpdateInGroup(typeof(FlightSystemGroup))]
     [UpdateAfter(typeof(StrafeSystem))]
     public partial struct InertialDumperSystem : ISystem
@@ -20,7 +25,6 @@ namespace Code.Flight
         {
             new InertialDumperJob
             {
-                // Velocity = SystemAPI.GetAspect<FloatingOriginAspect>(SystemAPI.GetSingletonEntity<FloatingOriginBase>()).Velocity,
                 Velocity = SystemAPI.GetComponent<PhysicsVelocity>(SystemAPI.GetSingletonEntity<FloatingOriginBase>()).Linear,
                 DT = SystemAPI.Time.fixedDeltaTime
             }.ScheduleParallel();

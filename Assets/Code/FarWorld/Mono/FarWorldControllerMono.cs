@@ -1,7 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
 using Code.FloatingOrigin;
-using Unity.Transforms;
 
 namespace Code.FarWorld
 {

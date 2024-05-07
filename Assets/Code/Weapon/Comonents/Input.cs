@@ -1,9 +1,9 @@
 using Unity.Entities;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
     public struct FireInput: IComponentData //, IEnableableComponent ??
     {
-        public float Value;
+        public bool Value;
     }
 }

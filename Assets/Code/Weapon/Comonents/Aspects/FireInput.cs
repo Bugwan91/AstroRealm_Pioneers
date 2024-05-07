@@ -1,6 +1,6 @@
 using Unity.Entities;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
     public readonly partial struct FireInputAspect : IAspect
     {
@@ -8,7 +8,7 @@ namespace Code.Gun
 
         private readonly RefRW<FireInput> _fire;
 
-        public float Fire
+        public bool Fire
         {
             get => _fire.ValueRO.Value;
             set => _fire.ValueRW.Value = value;

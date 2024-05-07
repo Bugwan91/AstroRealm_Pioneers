@@ -3,7 +3,7 @@ using Unity.Entities;
 using Unity.Physics;
 using Unity.Transforms;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
     [BurstCompile]
     [UpdateInGroup(typeof(SyncSystemGroup))]
@@ -21,7 +21,7 @@ namespace Code.Gun
         public void OnUpdate(ref SystemState state)
         {
             var fireInput = SystemAPI.GetSingleton<FireInput>().Value;
-            if (fireInput == 0f) return;
+            if (!fireInput) return;
             var ecb = SystemAPI.GetSingleton<EndInitializationEntityCommandBufferSystem.Singleton>()
                 .CreateCommandBuffer(state.WorldUnmanaged).AsParallelWriter();
             _velocityLookup.Update(ref state);

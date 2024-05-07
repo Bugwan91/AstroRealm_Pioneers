@@ -1,4 +1,4 @@
-using Code.Gun;
+using Code.Weapon;
 using Unity.Burst;
 using Unity.Entities;
 
@@ -20,7 +20,7 @@ namespace Code.Player
             var playerInput = SystemAPI.GetSingleton<PlayerInputData>();
             var gunEntity = SystemAPI.GetSingletonEntity<GunControlledByPlayerTag>();
             var fireInput = SystemAPI.GetAspect<FireInputAspect>(gunEntity);
-            fireInput.Fire = playerInput.Fire;
+            fireInput.Fire = playerInput.Fire > 0;
         }
     }
 }

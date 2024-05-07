@@ -1,7 +1,7 @@
 using Unity.Burst;
 using Unity.Entities;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
     public partial struct UpdateVelocityOfWeaponSystem : ISystem
     {

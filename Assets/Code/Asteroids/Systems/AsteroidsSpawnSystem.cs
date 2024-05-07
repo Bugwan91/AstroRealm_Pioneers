@@ -29,12 +29,12 @@ namespace Code.Asteroids
                 var asteroid = state.EntityManager.Instantiate(prefabs[UnityEngine.Random.Range(0, 2)].Prefab);
                 var transform = LocalTransform.Identity;
                 transform.Position.x = UnityEngine.Random.Range(-settings.Bounds.x, settings.Bounds.x);
-                transform.Position.y = math.pow(UnityEngine.Random.Range(-1f, 1f), 7f) * settings.Bounds.y;
+                transform.Position.y = math.pow(UnityEngine.Random.Range(-1f, 1f), 5f) * settings.Bounds.y;
                 transform.Position.z = UnityEngine.Random.Range(-settings.Bounds.z, settings.Bounds.z);
                 transform.RotateX(UnityEngine.Random.Range(-3, 3));
                 transform.RotateY(UnityEngine.Random.Range(-3, 3));
                 transform.RotateZ(UnityEngine.Random.Range(-3, 3));
-                var scale = UnityEngine.Random.Range(0.5f, 8f) + 64f * math.pow(UnityEngine.Random.Range(0f, 1f), 64f);
+                var scale = UnityEngine.Random.Range(0.5f, 8f) + 64f * math.pow(UnityEngine.Random.Range(0f, 1f), 32f);
                 transform.Scale *= scale;
                 state.EntityManager.SetComponentData(asteroid, transform);
                 var phys = SystemAPI.GetComponent<PhysicsMass>(asteroid);
@@ -46,6 +46,8 @@ namespace Code.Asteroids
                     UnityEngine.Random.Range(-1f, 1f) / math.sqrt(scale),
                     UnityEngine.Random.Range(-1f, 1f)) / math.sqrt(scale);
                 state.EntityManager.SetComponentData(asteroid, velocity);
+                
+                // var collider = SystemAPI.GetComponent<PhysicsCollider>(asteroid);
             }
 
             state.Enabled = false;

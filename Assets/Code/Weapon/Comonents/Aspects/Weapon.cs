@@ -1,12 +1,12 @@
 using Code.Utils;
+using Code.Damage;
 using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
-using Unity.VisualScripting;
 
-namespace Code.Gun
+namespace Code.Weapon
 {
     [BurstCompile]
     public readonly partial struct GunAspect: IAspect
@@ -14,35 +14,40 @@ namespace Code.Gun
         public readonly Entity Entity;
         
         private readonly RefRO<LocalTransform> _transform;
-        private readonly RefRW<Gun> _gun;
+        private readonly RefRW<Weapon> _weapon;
         private readonly RefRO<LocalToWorld> _worldTransform;
         
-        private float BulletSpeed => _gun.ValueRO.BulletSpeed;
+        private float BulletSpeed => _weapon.ValueRO.BulletSpeed;
 
         private float3 Direction => _worldTransform.ValueRO.Forward;
 
-        private float BulletLifeTime => _gun.ValueRO.MaxDistance / BulletSpeed;
+        private float BulletLifeTime => _weapon.ValueRO.MaxDistance / BulletSpeed;
 
         [BurstCompile]
         public void Shoot(float3 baseVelocity, double time, EntityCommandBuffer.ParallelWriter ecb, int index)
         {
-            var gun = _gun.ValueRO;
-            if (gun.LastShootTime + gun.ShootDelay > time) return;
-            _gun.ValueRW.LastShootTime = time;
-            var bullet = ecb.Instantiate(index, gun.BulletPrefab);
-            ecb.SetComponent(index, bullet, new LifeTime
+            var weapon = _weapon.ValueRO;
+            if (weapon.LastShootTime + weapon.ShootDelay > time) return;
+            _weapon.ValueRW.LastShootTime = time;
+            var bullet = ecb.Instantiate(index, weapon.ProjectilePrefab);
+            ecb.SetComponent(index, bullet, new Destructable
             {
+                ByTimer = true,
                 TimeLeft = BulletLifeTime
             });
             var posW = _worldTransform.ValueRO;
             var pos = LocalTransform.FromPositionRotation(
-                MathUtil.RotateY(gun.MuzzlePosition, posW.Rotation.value, posW.Position),
+                MathUtil.RotateY(weapon.MuzzlePosition, posW.Rotation.value, posW.Position),
                 posW.Rotation);
-            pos.Position.y = 0f;
+            // pos.Position.y = 0f;
             ecb.SetComponent(index, bullet, pos);
             var v = PhysicsVelocity.Zero;
-            v.Linear = Direction * gun.BulletSpeed + baseVelocity;
+            v.Linear = Direction * weapon.BulletSpeed + baseVelocity;
             ecb.SetComponent(index, bullet, v);
+            ecb.SetComponent(index, bullet, new Damage.DamageDealer
+            {
+                Value = _weapon.ValueRO.Damage
+            });
         }
     }
 }
