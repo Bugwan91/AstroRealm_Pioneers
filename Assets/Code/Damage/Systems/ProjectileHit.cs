@@ -9,8 +9,7 @@ using UnityEngine;
 
 namespace Code.Damage
 {
-    [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateAfter(typeof(PhysicsSystemGroup))]
+    [UpdateInGroup(typeof(DamageSystemGroup), OrderFirst = true)]
     public partial struct ProjectileHitSystem : ISystem
     {
         private ComponentLookup<Destructable> _destructableLookup;
@@ -74,7 +73,6 @@ namespace Code.Damage
         public EntityCommandBuffer ECB;
         public void Execute(CollisionEvent collisionEvent)
         {
-            Debug.Log("CollisionEvent");
             var projectile = Entity.Null;
             var target = Entity.Null;
 
@@ -87,11 +85,9 @@ namespace Code.Damage
                 if (TakeDamage.HasComponent(collisionEvent.EntityA))
                     target = collisionEvent.EntityA;
             }
-
-            Debug.Log("Checking collision");
+            
             if (Entity.Null.Equals(projectile) || Entity.Null.Equals(target))
             {
-                Debug.Log("NoCollision");
                 return;
             }
             TakeDamage.GetRefRW(target).ValueRW.Value = Damage.GetRefRO(projectile).ValueRO.Value;

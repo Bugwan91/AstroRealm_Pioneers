@@ -3,8 +3,7 @@ using Unity.Entities;
 
 namespace Code.Damage
 {
-    [UpdateInGroup(typeof(SyncSystemGroup), OrderFirst = true)]
-    [UpdateBefore(typeof(DestructSystem))]
+    [UpdateInGroup(typeof(DamageSystemGroup), OrderLast = true)]
     public partial struct ApplyDamage : ISystem
     {
         [BurstCompile]
