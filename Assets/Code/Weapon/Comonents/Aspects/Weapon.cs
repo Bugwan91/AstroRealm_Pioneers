@@ -9,7 +9,7 @@ using Unity.Transforms;
 namespace Code.Weapon
 {
     [BurstCompile]
-    public readonly partial struct GunAspect: IAspect
+    public readonly partial struct WeaponAspect: IAspect
     {
         public readonly Entity Entity;
         
@@ -39,6 +39,7 @@ namespace Code.Weapon
             var pos = LocalTransform.FromPositionRotation(
                 MathUtil.RotateY(weapon.MuzzlePosition, posW.Rotation.value, posW.Position),
                 posW.Rotation);
+            pos.Scale = weapon.ProjectileSize;
             // pos.Position.y = 0f;
             ecb.SetComponent(index, bullet, pos);
             var v = PhysicsVelocity.Zero;

@@ -42,10 +42,10 @@ namespace Code.Weapon
             public ComponentLookup<PhysicsVelocity> VelocityLookup;
         
             [BurstCompile]
-            private void Execute([EntityIndexInQuery] int index, GunAspect gun, Parent parent)
+            private void Execute([EntityIndexInQuery] int index, WeaponAspect weapon, Parent parent)
             {
                 VelocityLookup.TryGetComponent(parent.Value, out var velocity);
-                gun.Shoot(velocity.Linear, Time, ECB, index);
+                weapon.Shoot(velocity.Linear, Time, ECB, index);
             }
         }
     }

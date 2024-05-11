@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
-      data1: 140666587840333
+      data1: 140666587840332
       data2: 13763000512783810584
     lodBias: 1
     lodBiasMode: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
     materialQuality: 0
   m_RenderingPathDefaultBakedOrCustomReflectionFrameSettings:
     bitDatas:
-      data1: 135310754214733
+      data1: 135310762603340
       data2: 13763000499898974232
     lodBias: 1
     lodBiasMode: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
     materialQuality: 0
   m_RenderingPathDefaultRealtimeReflectionFrameSettings:
     bitDatas:
-      data1: 139923526000461
+      data1: 139923534389068
       data2: 13763000465807638544
     lodBias: 1
     lodBiasMode: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   afterPostProcessCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   lightLayerName0: Light Layer default
-  lightLayerName1: Light Layer 1
+  lightLayerName1: FarWorld
   lightLayerName2: Light Layer 2
   lightLayerName3: Light Layer 3
   lightLayerName4: Light Layer 4

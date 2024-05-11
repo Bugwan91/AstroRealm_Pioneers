@@ -38,8 +38,8 @@ namespace Code.Camera
         private float MinHeight => _settings.ValueRO.MinHeight;
         private float HeightDelta => _settings.ValueRO.MaxHeight - MinHeight;
         
-        private float CurrentHeight => MinHeight + HeightDelta * Height * Height;
-        private float CurrentDistance => (MinDistance + DistanceDelta * Height * Height);
+        private float CurrentHeight => MinHeight + HeightDelta * math.pow(Height, 3f);
+        private float CurrentDistance => MinDistance + DistanceDelta * math.pow(Height, 3f);
         private float ScrollSpeed => _settings.ValueRO.ScrollSpeed;
         private float ScrollSmooth => _settings.ValueRO.ScrollSmooth;
         private float InvertScroll => _settings.ValueRO.InvertScroll ? -1f : 1f;
@@ -89,8 +89,9 @@ namespace Code.Camera
         [BurstCompile]
         private void UpdateHeight(float scroll, float delta)
         {
-            if (scroll == 0f) return;
-            NeededHeight = math.clamp(Height + scroll, 0f, 1f);
+            if (scroll != 0f)
+                NeededHeight = math.clamp(NeededHeight + scroll, 0f, 1f);
+            if (Mathf.Approximately(Height, NeededHeight)) return;
             Height = math.lerp(Height, NeededHeight, ScrollSmooth * delta);
             UpdateDistance(-CurrentDistance);
         }

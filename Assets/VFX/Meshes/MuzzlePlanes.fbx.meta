@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: da5b596a826d626438ad8573b418e976
+guid: 138f5901a22805e4cad600b8a57678e4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cockpit.002
-    second: {fileID: 2100000, guid: d26e77062c0a2a1489f1d9770d558e4f, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

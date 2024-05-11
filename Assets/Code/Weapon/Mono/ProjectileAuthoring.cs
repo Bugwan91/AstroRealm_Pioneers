@@ -1,16 +1,34 @@
+using Code.Damage;
+using Code.FloatingOrigin;
 using Unity.Entities;
 using UnityEngine;
 
 namespace Code.Weapon
 {
-    public class ProjectileAuthoring: MonoBehaviour {}
+    public class ProjectileAuthoring : MonoBehaviour
+    {
+        public GameObject hitEffect;
+    }
 
     public class ProjectileBaker : Baker<ProjectileAuthoring>
     {
         public override void Bake(ProjectileAuthoring authoring)
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent<Projectile>(entity);
+            AddComponent<FloatingOriginBodyTag>(entity);
+            AddComponent(entity, new Projectile
+            {
+                HitEffectPrefab = GetEntity(authoring.hitEffect, TransformUsageFlags.Dynamic)
+            });
+            AddComponent(entity, new DamageDealer
+            {
+                Value = 10f,
+            });
+            AddComponent(entity, new Destructable
+            {
+                ByTimer = true,
+                TimeLeft = 1f,
+            });
         }
     }
 }
