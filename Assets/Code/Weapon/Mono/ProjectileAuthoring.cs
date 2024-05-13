@@ -8,6 +8,7 @@ namespace Code.Weapon
     public class ProjectileAuthoring : MonoBehaviour
     {
         public GameObject hitEffect;
+        public float ricochetImpulse = 1f;
     }
 
     public class ProjectileBaker : Baker<ProjectileAuthoring>
@@ -18,7 +19,8 @@ namespace Code.Weapon
             AddComponent<FloatingOriginBodyTag>(entity);
             AddComponent(entity, new Projectile
             {
-                HitEffectPrefab = GetEntity(authoring.hitEffect, TransformUsageFlags.Dynamic)
+                HitEffectPrefab = GetEntity(authoring.hitEffect, TransformUsageFlags.Dynamic),
+                RicochetImpulse = authoring.ricochetImpulse 
             });
             AddComponent(entity, new DamageDealer
             {

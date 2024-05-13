@@ -53,7 +53,7 @@ namespace Code.Asteroids
                 
                 state.EntityManager.SetComponentData(asteroid, new Destructable
                 {
-                    Health = 100f * math.sqrt(scale)
+                    Health = 10f * math.pow(scale, 2f)
                 });
                 state.EntityManager.SetComponentData(asteroid, new TakingDamage());
                 

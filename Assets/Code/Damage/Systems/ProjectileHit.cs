@@ -2,6 +2,7 @@ using Code.Weapon;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
@@ -85,15 +86,14 @@ namespace Code.Damage
                 if (TakeDamage.HasComponent(collisionEvent.EntityA))
                     target = collisionEvent.EntityA;
             }
+
+            if (Entity.Null.Equals(projectile) || Entity.Null.Equals(target)) return;
             
-            if (Entity.Null.Equals(projectile) || Entity.Null.Equals(target))
-            {
-                return;
-            }
+            var details = collisionEvent.CalculateDetails(ref PhysWorld);
+            // if (Projectiles.GetRefRO(projectile).ValueRO.RicochetImpulse > details.EstimatedImpulse) return;
+            
             TakeDamage.GetRefRW(target).ValueRW.Value = Damage.GetRefRO(projectile).ValueRO.Value;
             Destructables.SetComponentEnabled(projectile, false);
-
-            var details = collisionEvent.CalculateDetails(ref PhysWorld);
             
             var hitVFX = ECB.Instantiate(Projectiles[projectile].HitEffectPrefab);
             var hitPosition = LocalTransform.FromPosition(details.AverageContactPointPosition);

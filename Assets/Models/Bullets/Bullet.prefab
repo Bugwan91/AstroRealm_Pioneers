@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3369017557362224162}
   - component: {fileID: -3304611894308547295}
   - component: {fileID: 5136941622715032217}
-  - component: {fileID: -6197947844168962203}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -191,11 +190,11 @@ MonoBehaviour:
     m_Template: {fileID: 0}
     m_CollisionResponse:
       m_Override: 0
-      m_Value: 0
+      m_Value: 1
     m_Friction:
       m_Override: 0
       m_Value:
-        Value: 0.5
+        Value: 0.01
         CombineMode: 0
     m_Restitution:
       m_Override: 0
@@ -299,16 +298,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 8294251854989102816, guid: 9a7c4fbdf9f7d9241a236b48fcc62eb2,
     type: 3}
---- !u!114 &-6197947844168962203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7759362020560042171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b59cdbef7144b6927ae25911e684de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noExtraRotation: 0
+  ricochetImpulse: 0.0001

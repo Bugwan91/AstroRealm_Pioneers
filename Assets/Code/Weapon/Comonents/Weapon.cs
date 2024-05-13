@@ -12,16 +12,14 @@ namespace Code.Weapon
         public float BulletSpeed;
         public float ShootDelay;
         public float Damage;
-        // public VisualEffect MuzzleFlash;
         
         public double LastShootTime;
-        public float3 Velocity;
     }
 
     public struct GunIsFiring : IComponentData {}
 
     public struct WeaponSlot : IComponentData
     {
-        public Entity Gun;
+        public Entity Weapon;
     }
 }
