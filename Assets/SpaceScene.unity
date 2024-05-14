@@ -832,7 +832,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 10000
+  far clip plane: 20000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1534,7 +1534,7 @@ Transform:
   m_GameObject: {fileID: 317155200}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.14158133, z: -0, w: 0.98992664}
-  m_LocalPosition: {x: 3.34, y: -1.4, z: 6.23}
+  m_LocalPosition: {x: 3.34, y: -0.21, z: 6.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528e61729e974194b2bead0835da74c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rate: 0.00005
+  rate: 0.00001
   farCamera: {fileID: 1228313210}
   sun: {fileID: 1653040606}
   mainLight: {fileID: 157207113}
@@ -6222,7 +6222,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 10000
+  far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -9066,7 +9066,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1000, y: 1, z: 1000}
+  m_LocalScale: {x: 5000, y: 1, z: 5000}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1712639031}
@@ -9084,6 +9084,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4996c16d56c4316a1754af95e8da372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPosition: {fileID: 150536279}
+  minRadius: 1000
+  maxRadius: 20000
+  minIntensity: 0
+  maxIntensity: 0.5
+  heightOfMaxIntensity: 3000
 --- !u!1 &1903004912
 GameObject:
   m_ObjectHideFlags: 0
